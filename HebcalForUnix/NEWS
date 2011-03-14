@@ -1,0 +1,68 @@
+Changes in 3.9.1
+   [revved version number correctly]
+
+
+Changes in 3.9
+* Yom Hazikaron first observed in 1949. Yom HaShoah first observed in 1951.
+* Allow Asara B'Tevet to fall on a Friday.
+
+
+Changes in 3.8
+* fixed spelling of shabbat Chazon
+* fixed yom Haatzmaut 2007
+* added support for Mexico DST scheme (no longer the same as US & Canada)
+* Correct Gibraltar time zone to UTC+1, not UTC-10. Thanks to 
+  Jack Gross <jacobbgross@hotmail.com> for reporting the bug.
+
+Changes in 3.7
+* addressed 2004 adjustment to Yom HaZikaron Rules.
+http://sourceforge.net/tracker/index.php?func=detail&aid=1553196&group_id=340&atid=100340
+
+Changes in 3.6
+* Added Panama City, per Elan Z.
+  https://sourceforge.net/tracker/?func=detail&atid=350340&aid=1440788&group_id=340
+
+* Added support for building OSX-binaries disk images
+
+changes in 3.5
+*  Added 2007 DST rule, assuming that PL 109-58 will go into effect:
+   http://sourceforge.net/tracker/index.php?func=detail&aid=1427033&group_id=340&atid=100340
+
+ In 2005 the 109th Congress enacted P.L. 109-58, the Energy Policy Act
+ of 2005.  Section 110 of this Act amends the Uniform Time Act,
+ changing the beginning of DST to the second Sunday in March and the
+ ending of DST to the first Sunday in November.  This change will take
+ effect in March of 2007. The Act requires the Secretary of Commerce to
+ report to Congress within nine months of this date on the impact of
+ this section on energy consumption in the United States. Congress
+ retains the right to revert the Daylight Saving Time back to the 2005
+ time schedules once the Department study is complete.
+  - CRS Report for Congress 
+    Mark Gurevitz
+    http://opencrs.cdt.org/rpts/RS22284_20050927.pdf
+
+* Clarify in which year the Gregorian calendar starts.
+  http://sourceforge.net/tracker/index.php?func=detail&aid=1361957&group_id=340&atid=100340
+
+* Fixed some ashkenazi-spelling errors.
+  http://sourceforge.net/tracker/index.php?func=detail&aid=1151200&group_id=340&atid=100340
+
+* Simplified city customization.
+  http://sourceforge.net/tracker/index.php?func=detail&aid=991704&group_id=340&atid=100340
+  You can now pass a 
+      --with-default-city=Chicago 
+  argument to configure, and it will do the right thing.
+
+* Fixed some spelling issues
+http://sourceforge.net/tracker/index.php?func=detail&aid=1151200&group_id=340&atid=100340
+
+KNOWN ISSUES in 3.5:
+* Triple-Purim not properly represented
+  http://sourceforge.net/tracker/index.php?func=detail&aid=1165732&group_id=340&atid=100340
+  In years where 15 Adar falls on Saturday, the observances of Shushan purim are 
+  distributed over Friday, Saturday and Sunday.  This is not represented, and Shushan
+  Purim is indicated as falling on Sunday.  The megilah is read on Friday 
+  in Jerusalem.
+
+* Incorrect weekly sedra displayed near Rosh Hashana
+  http://sourceforge.net/tracker/index.php?func=detail&aid=1323641&group_id=340&atid=100340
