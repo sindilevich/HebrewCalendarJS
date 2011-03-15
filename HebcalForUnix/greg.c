@@ -40,20 +40,20 @@
 
 const char *eMonths[] =
 {
-    "UNUSED",
-    "January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"
+	"UNUSED",
+	"January", "February", "March", "April", "May", "June", "July",
+	"August", "September", "October", "November", "December"
 };
 
 int MonthLengths[][13] =
 {
-    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
-    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+	{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+	{0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 };
 
 const char *ShortDayNames[] =
 {
-    "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+	"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
 };
 
 
@@ -66,14 +66,14 @@ const char *ShortDayNames[] =
 
 int dayOfYear( date_t d )
 {
-    int dOY = d.dd + 31 * (d.mm - 1);
-    if (d.mm > FEB)
-    {
-        dOY -= (4 * d.mm + 23) / 10;
-        if (LEAP (d.yy))
-            dOY++;
-    }
-    return dOY;
+	int dOY = d.dd + 31 * (d.mm - 1);
+	if (d.mm > FEB)
+	{
+		dOY -= (4 * d.mm + 23) / 10;
+		if (LEAP (d.yy))
+			dOY++;
+	}
+	return dOY;
 }
 
 
@@ -83,11 +83,11 @@ int dayOfYear( date_t d )
  */
 long int greg2abs( date_t d )			/* "absolute date" */ 
 {
-    return ((long) dayOfYear (d)	/* days this year */
-            + 365L * (long) (d.yy - 1)	/* + days in prior years */
-            + (long) ((d.yy - 1) / 4	/* + Julian Leap years */
-                      - (d.yy - 1) / 100	/* - century years */
-                      + (d.yy - 1) / 400));	/* + Gregorian leap years */
+	return ((long) dayOfYear (d)	/* days this year */
+			+ 365L * (long) (d.yy - 1)	/* + days in prior years */
+			+ (long) ((d.yy - 1) / 4	/* + Julian Leap years */
+					  - (d.yy - 1) / 100	/* - century years */
+					  + (d.yy - 1) / 400));	/* + Gregorian leap years */
 }
 
 /*
@@ -115,26 +115,26 @@ date_t abs2greg( long theDate )
   year = (int) (400L * n400 + 100L * n100 + 4L * n4 + n1);
 
   if (4L == n100 || 4L == n1)
-    {
-      d.mm = 12;
-      d.dd = 31;
-      d.yy = year;
-      return d;
-    }
+  {
+	  d.mm = 12;
+	  d.dd = 31;
+	  d.yy = year;
+	  return d;
+  }
   else
-    {
-      year++;
-      month = 1;
-      while ((mlen = MonthLengths[LEAP (year)][month]) < day)
-	{
-	  day -= mlen;
-	  month++;
-	}
-      d.yy = year;
-      d.mm = month;
-      d.dd = day;
-      return d;
-    }
+  {
+	  year++;
+	  month = 1;
+	  while ((mlen = MonthLengths[LEAP (year)][month]) < day)
+	  {
+		  day -= mlen;
+		  month++;
+	  }
+	  d.yy = year;
+	  d.mm = month;
+	  d.dd = day;
+	  return d;
+  }
 }
 
 void incDate (date_t *dt, long n)			/* increments dt by n days */
@@ -161,17 +161,17 @@ void setDate ( date_t *d )
 /*    
 FIX: removing these decls, but need to start doing compilation platofrm checks to ensure that these aren't necessary.
 time_t time ();
-    char *ctime( const time_t * );
+	char *ctime( const time_t * );
 */  
-    time_t secs = time (NULL);
-    char *timestr = ctime (&secs);
+	time_t secs = time (NULL);
+	char *timestr = ctime (&secs);
 
 /* portability has driven me to truly shameful code.  
    please forgive this.
  */
-    sscanf (timestr + 20, "%d", &d->yy);
-    d->mm = lookup_string( timestr + 4, eMonths, 13, 3 );
-    sscanf (timestr + 8, "%d", &d->dd);
+	sscanf (timestr + 20, "%d", &d->yy);
+	d->mm = lookup_string( timestr + 4, eMonths, 13, 3 );
+	sscanf (timestr + 8, "%d", &d->dd);
 }
 
 
