@@ -48,7 +48,7 @@
     <Content Include="Properties\HebrewCalendarJS.Infrastructure.ruleset" />
     <Content Include="Properties\HebrewCalendarJS.Infrastructure.script" />
     <Compile Include="RataDie.cs" />
-    <Compile Include="GregorianCalendarDate.cs" />
+    <Compile Include="CivilDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(ProgramFiles)\ScriptSharp\v1.0\ScriptSharp.targets" />

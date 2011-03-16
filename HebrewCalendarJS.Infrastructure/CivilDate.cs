@@ -4,9 +4,9 @@ using System.Runtime.CompilerServices;
 namespace HebrewCalendarJS.Infrastructure
 {
 	/// <summary>
-	/// Specifies the month of the Gregorian calendar.
+	/// Specifies the month of the civil (Gregorian) calendar.
 	/// </summary>
-	public enum GregorianMonth
+	public enum CivilMonth
 	{
 		/// <summary>
 		/// Indicates January.
@@ -82,9 +82,9 @@ namespace HebrewCalendarJS.Infrastructure
 	};
 
 	/// <summary>
-	/// Represents a Gregorian calendar date.
+	/// Represents a civil (Gregorian) calendar date.
 	/// </summary>
-	public class GregorianCalendarDate
+	public class CivilDate
 	{
 		#region Public constants
 		/// <summary>
@@ -114,7 +114,7 @@ namespace HebrewCalendarJS.Infrastructure
 
 		private DateTime _date;
 
-		public GregorianCalendarDate(DateTime date, RataDie fixedDate)
+		public CivilDate(DateTime date, RataDie fixedDate)
 		{
 			COMMON_YEAR_MONTH_LENGTHS = new int[] { 0/*Padding element -- January is 1, not 0*/,
 				31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -166,11 +166,11 @@ namespace HebrewCalendarJS.Infrastructure
 		/// <summary>
 		/// Returns the month.
 		/// </summary>
-		public GregorianMonth Month
+		public CivilMonth Month
 		{
 			get
 			{
-				return (GregorianMonth)(_date.GetMonth() + 1);
+				return (CivilMonth)(_date.GetMonth() + 1);
 			}
 			set
 			{
@@ -221,7 +221,7 @@ namespace HebrewCalendarJS.Infrastructure
 		}
 
 		/// <summary>
-		/// Sets the <see cref="GregorianCalendarDate"/> object to a date based on its <see cref="RataDie"/> counterpart.
+		/// Sets the <see cref="CivilDate"/> object to a date based on its <see cref="RataDie"/> counterpart.
 		/// <remarks>See the footnote on page 384 of "Calendrical Calculations, Part II: Three Historical Calendars"
 		/// by E. M. Reingold,  N. Dershowitz, and S. M. Clamen, Software--Practice and Experience, Volume 23,
 		/// Number 4 (April, 1993), pages 383-404 for an explanation.</remarks>
@@ -258,7 +258,7 @@ namespace HebrewCalendarJS.Infrastructure
 			if (n100 == 4L || n1 == 4L)
 			{
 				Day = 31;
-				Month = GregorianMonth.December;
+				Month = CivilMonth.December;
 				Year = year;
 			}
 			else
@@ -272,13 +272,13 @@ namespace HebrewCalendarJS.Infrastructure
 					month++;
 				}
 				Day = day;
-				Month = (GregorianMonth)month;
+				Month = (CivilMonth)month;
 				Year = year;
 			}
 		}
 
 		/// <summary>
-		/// Sets the <see cref="GregorianCalendarDate"/> object to a date based on its <see cref="DateTime"/> counterpart.
+		/// Sets the <see cref="CivilDate"/> object to a date based on its <see cref="DateTime"/> counterpart.
 		/// </summary>
 		/// <param name="date">A <see cref="DateTime"/> object that represents the desired date.</param>
 		public void SetDate(DateTime date)
@@ -320,7 +320,7 @@ namespace HebrewCalendarJS.Infrastructure
 			int dayOfYear = 0;
 
 			dayOfYear = Day + 31 * ((int)Month - 1);
-			if (Month > GregorianMonth.February)
+			if (Month > CivilMonth.February)
 			{
 				dayOfYear -= (int)((4 * (int)Month + 23) / 10);
 				if (IsLeapYear)
