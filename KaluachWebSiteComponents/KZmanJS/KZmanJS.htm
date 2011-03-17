@@ -1,0 +1,285 @@
+<HTML>
+<HEAD>
+   <TITLE>KZmanJS - Abu Mami's Halachic Times JavaScript</TITLE>
+   <META NAME="GENERATOR" CONTENT="Abu Mami">
+
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript" SRC="ksun.js">
+<!--
+//-->
+</SCRIPT>
+
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript" SRC="kzman.js">
+<!--
+//-->
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgColor=#c0c0c0><FONT face="Arial,Helvetica" size=2>
+<b><center>
+<br>
+<FONT size=4 color=brown>KZmanJS - Abu Mami's Javascript Halachic Times Calculator</FONT>
+<br>
+</CENTER>
+
+<CENTER><P><FORM method="POST" name="data"></P></CENTER>
+
+<CENTER><P><B>Choose a location, or enter your own</B></P></CENTER>
+
+<CENTER><TABLE BORDER=1 CELLPADDING=2 BGCOLOR="#b0b0b0">
+
+<tr>
+  <TD align="center" colspan='2'>
+  <SELECT name="israel_city" size="1" onchange="list_pos(document.data.israel_city);">
+  <OPTION value=" 0, 0, 0, 0, 0"><I>Israel</OPTION>
+  <OPTION value=" N, 31, 15, E, 34, 47, 2">Be'er Sheva</OPTION>
+  <OPTION value=" N, 29, 33, E, 34, 56, 2">Eilat</OPTION>
+  <OPTION value=" N, 32, 49, E, 34, 59, 2">Haifa</OPTION>
+  <OPTION value=" N, 31, 36, E, 35, 53, 2">Hebron</OPTION>
+  <OPTION value=" N, 31, 52, E, 35, 27, 2">Jericho</OPTION>
+  <OPTION selected value=" N, 31, 46, E, 35, 14, 2">Jerusalem</OPTION>
+  <OPTION value=" N, 32, 10, E, 35,  6, 2">Karnei Shomron</OPTION>
+  <OPTION value=" N, 32, 20, E, 34, 51, 2">Netanya</OPTION>
+  <OPTION value=" N, 32,  5, E, 34, 46, 2">Petach Tikva</OPTION>
+  <OPTION value=" N, 33,  0, E, 35, 30, 2">Safed</OPTION>
+  <OPTION value=" N, 32, 12, E, 35, 18, 2">Shchem</OPTION>
+  <OPTION value=" N, 32,  5, E, 34, 46, 2">Tel Aviv</OPTION>
+  <OPTION value=" N, 32, 48, E, 35, 30, 2">Tiberias</OPTION>
+  </I></SELECT>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <SELECT name="diaspora_city" size="1" onchange="list_pos(document.data.diaspora_city);">
+  <OPTION value=" 0, 0, 0, 0, 0, 0, 0"><I>Diaspora</OPTION>
+  <OPTION value=" N, 51, 13, E,   4, 25,  1">Antwerpen, Belgium</OPTION>
+  <OPTION value=" N, 33, 44, W,  84, 23, -5">Atlanta, GA</OPTION>
+  <OPTION value=" N, 51, 51, E,   4, 21,  1">Baltimore, MD</OPTION>
+  <OPTION value=" N, 52, 31, E,  13, 24,  2">Berlin, Germany</OPTION>
+  <OPTION value=" N, 42, 21, W,  71,  3, -5">Boston, MA</OPTION>
+  <OPTION value=" N, 51, 51, E,   4, 21,  1">Brussels, Belgium</OPTION>
+  <OPTION value=" N, 30,  0, E,  31, 17,  2">Cairo, Egypt</OPTION>
+  <OPTION value=" N, 41, 52, W,  87, 38, -6">Chicago, IL</OPTION>
+  <OPTION value=" N, 55, 43, E,  12, 27,  1">Copenhagen, Denmark</OPTION>
+  <OPTION value=" N, 39, 44, W, 104, 59, -7">Denver, CO</OPTION>
+  <OPTION value=" N, 22, 10, E, 114, 18,  8">Hong Kong, China</OPTION>
+  <OPTION value=" N, 51, 30, E,   0,  7,  0">London, England</OPTION>
+  <OPTION value=" N, 34,  3, W, 118, 14, -8">Los Angeles, CA</OPTION>
+  <OPTION value=" S, 37, 52, E, 145,  8, 10">Melbourne, Australia</OPTION>
+  <OPTION value=" N, 45, 31, W,  73, 33, -5">Montreal, Quebec</OPTION>
+  <OPTION value=" N, 55, 45, E,  37, 37,  3">Moscow, Russia</OPTION>
+  <OPTION value=" N, 40, 45, W,  74,  0, -5">New York, NY</OPTION>
+  <OPTION value=" N, 39, 57, W,  75,  9, -5">Philadelphia, PA</OPTION>
+  <OPTION value=" N, 40, 26, W,  80,  0, -5">Pittsburgh, PA</OPTION>
+  <OPTION value=" N, 41, 52, E,  12, 37,  1">Rome, Italy</OPTION>
+  <OPTION value=" S, 33, 52, E, 151, 12, 10">Sydney, Australia</OPTION>
+  <OPTION value=" N, 37, 47, W, 122, 25, -8">San Francisco, CA</OPTION>
+  <OPTION value=" N, 43, 39, W,  79, 23, -5">Toronto, Ontario</OPTION>
+  <OPTION value=" N, 35, 41, E, 139, 44,  9">Tokyo, Japan</OPTION>
+  <OPTION value=" N, 52, 15, E,  21,  5,  1">Warsaw, Poland</OPTION>
+  <OPTION value=" N, 38, 54, W,  77,  1, -5">Washington, DC</OPTION>
+  </I></SELECT>
+  </td>
+</tr>
+
+<TR>
+  <TD align="center" colspan='1'>
+   <SELECT name="month" size="1" onchange="date_vars_doit();">
+     <OPTION>January</OPTION>
+     <OPTION>February</OPTION>
+	 <OPTION>March</OPTION>
+	 <OPTION>April</OPTION>
+     <OPTION>May</OPTION>
+	 <OPTION>June</OPTION>
+	 <OPTION>July</OPTION>
+	 <OPTION>August</OPTION>
+     <OPTION>September</OPTION>
+	 <OPTION>October</OPTION>
+	 <OPTION>November</OPTION>
+     <OPTION>December</OPTION>
+     </SELECT>
+	&nbsp;
+   <SELECT name="day" size="1" onchange="date_vars_doit();">
+     <OPTION>1</OPTION> <OPTION>2</OPTION> <OPTION>3</OPTION> <OPTION>4</OPTION> <OPTION>5</OPTION>
+  	 <OPTION>6</OPTION> <OPTION>7</OPTION> <OPTION>8</OPTION> <OPTION>9</OPTION> <OPTION>10</OPTION>
+   	 <OPTION>11</OPTION> <OPTION>12</OPTION> <OPTION>13</OPTION> <OPTION>14</OPTION> <OPTION>15</OPTION>
+     <OPTION>16</OPTION> <OPTION>17</OPTION> <OPTION>18</OPTION> <OPTION>19</OPTION> <OPTION>20</OPTION>
+	 <OPTION>21</OPTION> <OPTION>22</OPTION> <OPTION>23</OPTION> <OPTION>24</OPTION> <OPTION>25</OPTION>
+     <OPTION>26</OPTION> <OPTION>27</OPTION> <OPTION>28</OPTION> <OPTION>29</OPTION> <OPTION>30</OPTION>
+	 <OPTION>31</OPTION>
+	 </SELECT>
+	&nbsp;
+	 <INPUT TYPE="button" NAME="prevYbutton" VALUE="<" onClick="change_year(-1)">
+	 <INPUT NAME="year" TYPE="text" VALUE="" SIZE=5 onChange="date_vars_doit()" onFocus="this.blur()" onClick="this.blur()">
+	 <INPUT TYPE="button" NAME="nextYbutton" VALUE=">" onClick="change_year(1)">
+  </TD>
+  <TD align="center" colspan='1'>
+    <INPUT type="text" size="30" maxlength="50" name="placename">
+  </TD>
+ 
+</TR>
+
+<TR>
+  <TD align="center" colspan='1'><I>Lat</I>
+	&nbsp;
+    <INPUT type="text" size="4" maxlength="80" name="latd" value="0" onchange="man_pos();"><font size='-1'>deg</font>
+	&nbsp;
+    <INPUT type="text" size="4" maxlength="80" name="latm" value="0" onchange="man_pos();"><font size='-1'>min</font>
+	&nbsp;
+    <INPUT type="radio" checked name="lats" onclick="man_pos();"><I>N</I>&nbsp;
+    <INPUT type="radio" name="lats" onclick="man_pos();"><I>S</I>
+    </TD>
+
+  <TD align="center" colspan='1'><I>Lon</I>
+	&nbsp;
+    <INPUT type="text" size="4" maxlength="80" name="lngd" value="0" onchange="man_pos();"><font size='-1'>deg</font>
+	&nbsp;
+    <INPUT type="text" size="4" maxlength="80" name="lngm" value="0" onchange="man_pos();"><font size='-1'>min</font>
+	&nbsp;
+    <INPUT type="radio" checked name="lngs" onclick="man_pos();"><I>W</I>&nbsp;
+    <INPUT type="radio" name="lngs" onclick="man_pos();"><I>E</I>
+	</TD>
+</TR>
+
+
+<TR>
+  <TD align="center" colspan='2'>
+    <SELECT name="tz" size="1" onchange="doit('');">
+	  <OPTION>GMT-12</OPTION>
+      <OPTION>GMT-11</OPTION>
+	  <OPTION>GMT-10</OPTION>
+	  <OPTION>GMT-09</OPTION>
+      <OPTION>GMT-08 (PST)</OPTION>
+	  <OPTION>GMT-07 (MST)</OPTION>
+	  <OPTION>GMT-06 (CST)</OPTION>
+	  <OPTION>GMT-05 (EST)</OPTION>
+	  <OPTION>GMT-04</OPTION>
+	  <OPTION>GMT-03</OPTION>
+      <OPTION>GMT-02</OPTION>
+	  <OPTION>GMT-01</OPTION>
+	  <OPTION selected>GMT+00 (GMT)</OPTION>
+	  <OPTION>GMT+01</OPTION>
+	  <OPTION>GMT+02</OPTION>
+	  <OPTION>GMT+03</OPTION>
+      <OPTION>GMT+04</OPTION>
+	  <OPTION>GMT+05</OPTION>
+	  <OPTION>GMT+06</OPTION>
+      <OPTION>GMT+07</OPTION>
+	  <OPTION>GMT+08</OPTION>
+	  <OPTION>GMT+09</OPTION>
+      <OPTION>GMT+10</OPTION>
+	  <OPTION>GMT+11</OPTION>
+	  <OPTION>GMT+12</OPTION>
+      </SELECT>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;
+    <INPUT type="radio" checked name="ampm" value="Selection" onclick="set_ampm(1);">
+	  <I>AM/PM</I>
+	&nbsp;
+	<INPUT type="radio" name="ampm" value="Selection" onclick="set_ampm(0);">
+	  <I>24H</I>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;
+    <INPUT type="checkbox" name="dst" value="Selection" onclick="set_dst();"><I>DST</I>
+  </TD>
+
+</TR>
+
+</TABLE></CENTER>
+
+<CENTER><TABLE BORDER=0 CELLPADDING=2 BGCOLOR="#c0c0c0" >
+
+<td valign='top'>
+<table BORDER=0>
+
+<TR>
+  <TD align="center"><I>Alot&nbsp;Hashachar (dawn)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="alot"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Misheyakir</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="misheyakir"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Hanetz&nbsp;Hachama (sunrise)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="hanetz"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Sof&nbsp; zman&nbsp; shema (gr"a)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="shema"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Sof&nbsp; zman&nbsp; tefillah (gr"a)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="tefillah"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Chatzot&nbsp; hayom (noon)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="chatzot"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Mincha&nbsp; gedolah</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="minchag"></TD>
+</TR>
+
+</table>
+</td>
+
+<td valign='top'>
+<table BORDER=0>
+
+<TR>
+  <TD align="center"><I>Mincha&nbsp; ketana</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="minchak"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Plag&nbsp; hamincha</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="plag"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Shkiat&nbsp; hachama (sunset)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="shkia"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Tzeit&nbsp; hakochavim (nightfall)</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="tzeit"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Knissat&nbsp; Shabbat</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="knissatShabbat"></TD>
+</TR>
+
+<TR>
+  <TD align="center"><I>Motzei&nbsp; Shabbat</I></TD>
+  <TD align="center"><INPUT type="text" size="9" maxlength="80" onFocus="this.blur()" onClick="this.blur()" name="motzeiShabbat"></TD>
+</TR>
+
+</table>
+</td>
+
+</TABLE>
+
+<font face="Arial" size=-1><br>Copyright &copy; 5760-5763 (2000-2003 CE), Abu Mami and Yisrael Hersch. All rights reserved.<br>
+email: <a href="mailto:abumami@kaluach.org"> abumami@kaluach.org</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp web site: <a href="http://www.kaluach.org">http://www.kaluach.org</a></font>
+
+</CENTER>
+
+<P></FORM></P>
+
+
+<P><SCRIPT language="JavaScript"><!--
+
+set_default_date();
+list_pos(document.data.israel_city);
+
+// end hide -->
+</SCRIPT></P>
+
+</BODY>
+</HTML>

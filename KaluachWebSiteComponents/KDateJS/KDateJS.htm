@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 FINAL//EN">
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="Author" content="Yisrael (Russ) Hersch">
+<META name="Description" content="Kaluach is an easy to use Hebrew/Civil calendar for MS Windows.">
+<META name="KeyWords" content="Hebrew, calendar, Jewish, Kaluach, date, year, luach, shana, holidays, chagim, hagim, Israel, halacha, halachic, times, zmanim, Shabbat, shabbos, kodesh, parsha, parshiot, parshios, chodesh, month, moon, Rosh, yahrzeit, hashana, birthday, bar, bat, mitzvah, sfira, sfirat, haomer, omer, netz, shkia, hashachar, tzeit, tzeis, hakochavim, motzei, mazalot, mazalos">
+<META NAME="Generator" CONTENT="Abu Mami">
+<META NAME="Author" CONTENT="Yisrael (Russ) Hersch">
+
+<TITLE>KDATEJS - Abu Mami's Hebrew Date Javascript</TITLE>
+
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript" SRC="kdate.js">
+<!--
+//-->
+</SCRIPT>
+
+</head>
+
+<body>
+<font face="arial, helvetica" ><b>
+KDateJS - Abu Mami's Javascript Hebrew Date Display
+<br><br>
+<SCRIPT LANGUAGE="JavaScript"> <!--
+
+	// First display the Hebrew date
+	var now = new Date;
+	var tday = now.getDate();
+	var tmonth = now.getMonth() + 1;
+	var tyear = now.getYear();
+	if(tyear < 1900)
+		// if date from Netscape, then add 1900
+		tyear += 1900;
+	var hebDate = civ2heb(tday, tmonth, tyear);
+	var hmS = hebDate.substring(hebDate.indexOf(' ')+1, hebDate.length);
+	var	hDay = eval(hebDate.substring(0, hebDate.indexOf(' ')));
+	var hMonth = eval(hmS.substring(0, hmS.indexOf(' ')));
+	var hYear = hmS.substring(hmS.indexOf(' ')+1, hmS.length);
+	document.write('The Hebrew date is:<br>');
+	document.write('&nbsp;&nbsp;&nbsp;&nbsp;' + hDay + ' ' + hebMonth[hMonth+1] + ' ' + hYear);
+	document.write('<br>');
+
+	// Then display the corresponding civil dates
+	var day, month, year;
+	var today = new Date;
+    var yesterday = new Date(today.getTime() - 86400000);
+	day   = yesterday.getDate();
+	month = yesterday.getMonth() + 1;
+	year  = yesterday.getYear();
+	if(year < 1900)
+		year += 1900; // if date from Netscape, then add 1900
+	document.write('The corresponding civil dates are:<br>');
+	document.write('&nbsp;&nbsp;&nbsp;&nbsp;' + civMonth[month] + ' ' + day + ', ' + year + '&nbsp;(the night of)<br>');
+	day   = today.getDate();
+	month = today.getMonth() + 1;
+	year  = today.getYear();
+	if(year < 1900)
+		year += 1900; // if date from Netscape, then add 1900
+	document.write('&nbsp;&nbsp;&nbsp;&nbsp;' + civMonth[month] + ' ' + day + ', ' + year);
+
+//--></SCRIPT>
+</b></font>
+
+</body>
+</html>
