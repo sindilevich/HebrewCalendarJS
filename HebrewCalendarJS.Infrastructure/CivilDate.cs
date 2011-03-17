@@ -112,27 +112,20 @@ namespace HebrewCalendarJS.Infrastructure
 		public readonly int[] LEAP_YEAR_MONTH_LENGTHS;
 		#endregion Public constants
 
-		private DateTime _date;
+		private int _day;
+		private CivilMonth _month;
+		private int _fullYear;
 
-		public CivilDate(DateTime date, RataDie fixedDate)
+		public CivilDate()
 		{
+			DateTime today = DateTime.Today;
+
 			COMMON_YEAR_MONTH_LENGTHS = new int[] { 0/*Padding element -- January is 1, not 0*/,
 				31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 			LEAP_YEAR_MONTH_LENGTHS = new int[] { 0/*Padding element -- January is 1, not 0*/,
 				31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-			if (!Script.IsNullOrUndefined(date))
-			{
-				SetDate(date);
-			}
-			else if (!Script.IsNullOrUndefined(fixedDate))
-			{
-				SetRataDie(fixedDate);
-			}
-			else
-			{
-				SetDate(DateTime.Today);
-			}
+			SetDate(today.GetDate(), (CivilMonth)(today.GetMonth() + 1), today.GetFullYear());
 		}
 
 		#region Public properties
@@ -143,8 +136,7 @@ namespace HebrewCalendarJS.Infrastructure
 		{
 			get
 			{
-				return (Year % 4 == 0 &&
-					(Year % 100 != 0 || Year % 400 == 0));
+				return GetIsLeapYear(Year);
 			}
 		}
 
@@ -155,11 +147,7 @@ namespace HebrewCalendarJS.Infrastructure
 		{
 			get
 			{
-				return _date.GetDate();
-			}
-			set
-			{
-				_date.SetDate(value);
+				return _day;
 			}
 		}
 
@@ -170,11 +158,7 @@ namespace HebrewCalendarJS.Infrastructure
 		{
 			get
 			{
-				return (CivilMonth)(_date.GetMonth() + 1);
-			}
-			set
-			{
-				_date.SetMonth((int)value - 1);
+				return _month;
 			}
 		}
 
@@ -185,11 +169,7 @@ namespace HebrewCalendarJS.Infrastructure
 		{
 			get
 			{
-				return _date.GetFullYear();
-			}
-			set
-			{
-				_date.SetFullYear(value);
+				return _fullYear;
 			}
 		}
 		#endregion Public properties
@@ -233,7 +213,6 @@ namespace HebrewCalendarJS.Infrastructure
 			int year = 0;
 			int month = 0;
 			int mlen = 0;
-			int[] monthLengths = null;
 			long d0 = 0L;
 			long n400 = 0L;
 			long d1 = 0L;
@@ -257,33 +236,36 @@ namespace HebrewCalendarJS.Infrastructure
 
 			if (n100 == 4L || n1 == 4L)
 			{
-				Day = 31;
-				Month = CivilMonth.December;
-				Year = year;
+				SetDate(31, CivilMonth.December, year);
 			}
 			else
 			{
 				year++;
 				month = 1; // Start from January
-				monthLengths = IsLeapYear ? LEAP_YEAR_MONTH_LENGTHS : COMMON_YEAR_MONTH_LENGTHS;
-				while ((mlen = monthLengths[month]) < day)
+				while ((mlen = GetDaysInMonth((CivilMonth)month, year)) < day)
 				{
 					day -= mlen;
 					month++;
 				}
-				Day = day;
-				Month = (CivilMonth)month;
-				Year = year;
+				SetDate(day, (CivilMonth)month, year);
 			}
 		}
 
 		/// <summary>
-		/// Sets the <see cref="CivilDate"/> object to a date based on its <see cref="DateTime"/> counterpart.
+		/// Sets the <see cref="CivilDate"/> object to a date based on a combination of <paramref name="day"/>,
+		/// <paramref name="month"/> and <paramref name="fullYear"/> values.
 		/// </summary>
-		/// <param name="date">A <see cref="DateTime"/> object that represents the desired date.</param>
-		public void SetDate(DateTime date)
+		/// <param name="day">The date as an integer between 1 and 31.</param>
+		/// <param name="month">The month as a <see cref="CivilMonth"/> enum between January and December.</param>
+		/// <param name="fullYear">The full year, for example, 1976 (and not 76).</param>
+		public void SetDate(int day, CivilMonth month, int fullYear)
 		{
-			_date = date;
+			int maxDay = 0;
+
+			maxDay = GetDaysInMonth(month, fullYear);
+			_day = (day > maxDay ? maxDay : day);
+			_month = month;
+			_fullYear = fullYear;
 		}
 
 		/// <summary>
@@ -332,5 +314,33 @@ namespace HebrewCalendarJS.Infrastructure
 			return dayOfYear;
 		}
 		#endregion Public methods
+
+		#region Private methods
+		/// <summary>
+		/// Calculates whether the specified <paramref name="fullYear"/> is a leap year.
+		/// </summary>
+		/// <param name="fullYear">The full year, for example, 1976 (and not 76).</param>
+		/// <returns>true when the year is a leap year; otherwise - false.</returns>
+		private bool GetIsLeapYear(int fullYear)
+		{
+			return (fullYear % 4 == 0 &&
+					(fullYear % 100 != 0 || fullYear % 400 == 0));
+		}
+
+		/// <summary>
+		/// Returns the number of days of the specified <paramref name="month"/> of the <paramref name="fullYear"/>.
+		/// </summary>
+		/// <param name="month">The month as a <see cref="CivilMonth"/> enum between January and December.</param>
+		/// <param name="fullYear">The full year, for example, 1976 (and not 76).</param>
+		/// <returns>The number of days.</returns>
+		private int GetDaysInMonth(CivilMonth month, int fullYear)
+		{
+			int[] monthLengths = null;
+
+			monthLengths = GetIsLeapYear(fullYear) ? LEAP_YEAR_MONTH_LENGTHS : COMMON_YEAR_MONTH_LENGTHS;
+
+			return monthLengths[(int)_month];
+		}
+		#endregion Private methods
 	}
 }
