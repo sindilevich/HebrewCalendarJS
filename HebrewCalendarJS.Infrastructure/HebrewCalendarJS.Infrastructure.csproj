@@ -47,6 +47,8 @@
   <ItemGroup>
     <Content Include="Properties\HebrewCalendarJS.Infrastructure.ruleset" />
     <Content Include="Properties\HebrewCalendarJS.Infrastructure.script" />
+    <Compile Include="CivilMonthEnumeration.cs" />
+    <Compile Include="DayOfWeekEnumeration.cs" />
     <Compile Include="RataDie.cs" />
     <Compile Include="CivilDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

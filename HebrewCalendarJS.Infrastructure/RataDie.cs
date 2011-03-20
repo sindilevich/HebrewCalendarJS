@@ -1,55 +1,5 @@
-using System.Runtime.CompilerServices;
-
 namespace HebrewCalendarJS.Infrastructure
 {
-	/// <summary>
-	/// Specifies the day of the week.
-	/// </summary>
-	public enum DayOfWeek
-	{
-		/// <summary>
-		/// Indicates Sunday.
-		/// </summary>
-		[PreserveCase]
-		Sunday = 0,
-
-		/// <summary>
-		/// Indicates Monday.
-		/// </summary>
-		[PreserveCase]
-		Monday = 1,
-
-		/// <summary>
-		/// Indicates Tuesday.
-		/// </summary>
-		[PreserveCase]
-		Tuesday = 2,
-
-		/// <summary>
-		/// Indicates Wednesday.
-		/// </summary>
-		[PreserveCase]
-		Wednesday = 3,
-
-		/// <summary>
-		/// Indicates Thursday.
-		/// </summary>
-		[PreserveCase]
-		Thursday = 4,
-
-		/// <summary>
-		/// Indicates Friday.
-		/// </summary>
-		[PreserveCase]
-		Friday = 5,
-
-		/// <summary>
-		/// Indicates Saturday.
-		/// </summary>
-		[PreserveCase]
-		Saturday = 6
-	};
-
 	/// <summary>
 	/// RataDie class is a representation of number of days elapsed since the Gregorian date 12/31/1 BC.
 	/// </summary>
@@ -59,10 +9,10 @@ namespace HebrewCalendarJS.Infrastructure
 
 		public RataDie()
 		{
-			_days = 0;
+			Days = 0;
 		}
 
-		#region Public methods
+		#region Public properties
 		/// <summary>
 		/// The number of days elapsed since the Gregorian date 12/31/1 BC.
 		/// </summary>
@@ -77,16 +27,9 @@ namespace HebrewCalendarJS.Infrastructure
 				_days = value;
 			}
 		}
+		#endregion Public properties
 
-		/// <summary>
-		/// Returns the day of the week value in the object.
-		/// </summary>
-		/// <returns>The day of the week.</returns>
-		public DayOfWeek DayOfWeek()
-		{
-			return (DayOfWeek)(_days % 7L);
-		}
-
+		#region Public methods
 		/// <summary>
 		/// Returns the <see cref="RataDie"/> of the <paramref name="dayOfWeek"/> on or before a fixed date,
 		/// represented by the instance.
@@ -98,7 +41,7 @@ namespace HebrewCalendarJS.Infrastructure
 			RataDie result = null;
 
 			result = new RataDie();
-			result.Days = _days - ((_days - (int)dayOfWeek) % 7L);
+			result.Days = Days - ((Days - (int)dayOfWeek) % 7L);
 			return result;
 		}
 
@@ -113,7 +56,7 @@ namespace HebrewCalendarJS.Infrastructure
 			RataDie laterDate = null;
 
 			laterDate = new RataDie();
-			laterDate.Days = _days + 6;
+			laterDate.Days = Days + 6;
 			return laterDate.DayOnOrBefore(dayOfWeek);
 		}
 
@@ -128,7 +71,7 @@ namespace HebrewCalendarJS.Infrastructure
 			RataDie halfNextWeekDate = null;
 
 			halfNextWeekDate = new RataDie();
-			halfNextWeekDate.Days = _days + 3;
+			halfNextWeekDate.Days = Days + 3;
 			return halfNextWeekDate.DayOnOrBefore(dayOfWeek);
 		}
 
@@ -143,7 +86,7 @@ namespace HebrewCalendarJS.Infrastructure
 			RataDie yesterdayDate = null;
 
 			yesterdayDate = new RataDie();
-			yesterdayDate.Days = _days - 1;
+			yesterdayDate.Days = Days - 1;
 			return yesterdayDate.DayOnOrBefore(dayOfWeek);
 		}
 
@@ -158,7 +101,7 @@ namespace HebrewCalendarJS.Infrastructure
 			RataDie nextWeekDate = null;
 
 			nextWeekDate = new RataDie();
-			nextWeekDate.Days = _days + 7;
+			nextWeekDate.Days = Days + 7;
 			return nextWeekDate.DayOnOrBefore(dayOfWeek);
 		}
 		#endregion Public methods
