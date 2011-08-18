@@ -5,7 +5,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HebcalForUnix", "HebcalForU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaluachWebSiteComponents", "KaluachWebSiteComponents\KaluachWebSiteComponents.csproj", "{349BCD0B-97AA-4905-9D2C-5FB30A74092D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HebrewCalendarJS.Infrastructure", "HebrewCalendarJS.Infrastructure\HebrewCalendarJS.Infrastructure.csproj", "{24EE5AD5-4E89-4E65-9868-1457589FF36C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HebrewCalendarJS.Infrastructure", "HebrewCalendarJS.Infrastructure\HebrewCalendarJS.Infrastructure.csproj", "{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,16 +37,16 @@ Global
 		{349BCD0B-97AA-4905-9D2C-5FB30A74092D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{349BCD0B-97AA-4905-9D2C-5FB30A74092D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{349BCD0B-97AA-4905-9D2C-5FB30A74092D}.Release|Win32.ActiveCfg = Release|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{24EE5AD5-4E89-4E65-9868-1457589FF36C}.Release|Win32.ActiveCfg = Release|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5CB0CF52-713B-4CFB-9241-0F4B0E04BE1F}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
