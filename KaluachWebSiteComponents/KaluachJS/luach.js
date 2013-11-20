@@ -241,6 +241,7 @@ function BuildLuachHTML(parms)  {
 			// convert civil date to hebrew
 			hebDate = civ2heb(cDay, cMonth, cYear);
 			hebDay = eval(hebDate.substring(0, hebDate.indexOf(' ')));
+			hebDay = " אבגדהוזחטיייייטטיייככככככככככל"[hebDay] + "           אבגדוזזחט אבגדהוזחט "[hebDay];
 
 			var hm = hebDate.substring(hebDate.indexOf(' ')+1, hebDate.length);
 			var hMonth = eval(hm.substring(0, hm.indexOf(' ')));
